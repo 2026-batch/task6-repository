@@ -1,0 +1,7 @@
+IDENTITY             NAME                 AGE                  GENDER               ITEM NAME            ITEM QUANTITY 
+-----------------------------------------------------------------------------------------------------------------------------
+8247053036           Rohit                24                   m                    LUX                  15          
+8247053036           Rohit                24                   m                    COLGATE              25          
+8247053036           Rohit                24                   m                    BROWN                15          
+8247053036           Rohit                24                   m                    BASMATI              25          
+8247053036           Rohit                24                   m                    LOKWAN               15          
