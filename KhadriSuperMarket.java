@@ -18,6 +18,7 @@ public class KhadriSuperMarket{
 	Cosmotics cosmotics = new Cosmotics();
 	Soaps soaps = new Soaps();
 	soaps.setSoap(Soap.LUX);
+
 	Pastes pastes = new Pastes();
 	pastes.setPaste(Paste.COLGATE);
 	
@@ -38,6 +39,13 @@ public class KhadriSuperMarket{
 
 	
    	stock = new StockData(cosmotics, groceries);
+
+	
+	cosmotics.setSoaps(soaps);
+
+	
+   	stock = new StockData(cosmotics);
+
 
    }
 
@@ -107,6 +115,7 @@ public class KhadriSuperMarket{
 	  				}  				
 	    		 } 
 	 		 }
+<<<<<<< HEAD
        Paste[] pasteEnumValues = stock.getCosmotics().getPastes().getPaste().values();
 
         for(Paste paste : pasteEnumValues){
@@ -198,6 +207,24 @@ public class KhadriSuperMarket{
         	    saveCustomerHistory(customer);
         
           }
+=======
+
+	 		 if(notAvailable){
+	 		 		System.out.println("Entered Item in out of stock !!!!");
+	 		 }
+
+	 		 availableStocks();
+
+	 		 decision = KhadriSuperUtil.isDecision(sc,decision);
+
+	    }while(decision);
+
+	    customer.setItems(listOfItems);
+
+	    saveCustomerHistory(customer);
+
+  }
+>>>>>>> origin/master
 
 
   private void saveCustomerHistory(Customer customer) throws IOException{
