@@ -45,10 +45,8 @@ public class KhadriSuperMarket{
 
 	
    	stock = new StockData(cosmotics);
-
-
+    
    }
-
 	
   public static void main(String[] args) throws IOException{
   	
@@ -57,7 +55,6 @@ public class KhadriSuperMarket{
 	  instance.purchaseItems();
 
   }
-
 
   private void availableStocks(){
   	System.out.println(String.format("###### AVAILABLE STOCKS IN KHADRI SUPER MARKET ######"));
@@ -101,7 +98,7 @@ public class KhadriSuperMarket{
 	  		Soap[] soapEnumValues = stock.getCosmotics().getSoaps().getSoap().values();
 
 	  		boolean notAvailable = true;
-	   		 for(Soap soap: soapEnumValues){
+	   		for(Soap soap: soapEnumValues){
 	    		if(soap.name().equals(itemName)){
 					notAvailable = false;
 	    			System.out.println("Enter purchase item quantity : ");
@@ -115,22 +112,22 @@ public class KhadriSuperMarket{
 	  				}  				
 	    		 } 
 	 		 }
-<<<<<<< HEAD
+
        Paste[] pasteEnumValues = stock.getCosmotics().getPastes().getPaste().values();
 
-        for(Paste paste : pasteEnumValues){
-            if(paste.name().equals(itemName)){
-                notAvailable = false;
-        
-                System.out.println("Enter purchase item quantity : ");
-                int noOfQuantity = sc.nextInt();
-        
-                if(paste.getQuantity() <= 0){
-                    System.out.println("just out of stock !!!!");
-                } else {
-                    paste.setQuantity(paste.getQuantity() - noOfQuantity);
-                    Item item = new Item(itemName, noOfQuantity);
-                    listOfItems.add(item);
+            for(Paste paste : pasteEnumValues){
+                if(paste.name().equals(itemName)){
+                    notAvailable = false;
+            
+                    System.out.println("Enter purchase item quantity : ");
+                    int noOfQuantity = sc.nextInt();
+            
+                    if(paste.getQuantity() <= 0){
+                        System.out.println("just out of stock !!!!");
+                    } else {
+                        paste.setQuantity(paste.getQuantity() - noOfQuantity);
+                        Item item = new Item(itemName, noOfQuantity);
+                        listOfItems.add(item);
                 }
             }
         }
@@ -207,7 +204,7 @@ public class KhadriSuperMarket{
         	    saveCustomerHistory(customer);
         
           }
-=======
+
 
 	 		 if(notAvailable){
 	 		 		System.out.println("Entered Item in out of stock !!!!");
@@ -222,9 +219,6 @@ public class KhadriSuperMarket{
 	    customer.setItems(listOfItems);
 
 	    saveCustomerHistory(customer);
-
-  }
->>>>>>> origin/master
 
 
   private void saveCustomerHistory(Customer customer) throws IOException{
@@ -256,4 +250,3 @@ public class KhadriSuperMarket{
  	System.out.println("Saved Customer "+resolvedPath.toAbsolutePath());
   }
 
-}
