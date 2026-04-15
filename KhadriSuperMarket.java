@@ -40,10 +40,7 @@ public class KhadriSuperMarket{
 	
    	stock = new StockData(cosmotics, groceries);
 
-	
-	cosmotics.setSoaps(soaps);
 
-	
    	stock = new StockData(cosmotics);
     
    }
@@ -128,9 +125,9 @@ public class KhadriSuperMarket{
                         paste.setQuantity(paste.getQuantity() - noOfQuantity);
                         Item item = new Item(itemName, noOfQuantity);
                         listOfItems.add(item);
+                    }
                 }
             }
-        }
 
        Sugar[] sugarEnumValues = stock.getGroceries().getSugars().getSugar().values();
 
@@ -145,11 +142,9 @@ public class KhadriSuperMarket{
                     System.out.println("just out of stock !!!!");
                 } else {
                     sugar.setQuantity(sugar.getQuantity() - noOfQuantity);
-                    Item item = new Item(itemName, noOfQuantity);
-                    listOfItems.add(item);
-                }
-            }
-        }
+ 				}
+ 			}
+ 		}
 
        Rice[] riceEnumValues = stock.getGroceries().getRices().getRice().values();
 
@@ -188,38 +183,26 @@ public class KhadriSuperMarket{
                 }
             }
         }
+ 
 
-        	 		 if(notAvailable){
-        	 		 		System.out.println("Entered Item in out of stock !!!!");
-        	 		 }
+  	 		 if(notAvailable){
+ 	 		 		System.out.println("Entered Item in out of stock !!!!");
+     	 		 }
         
-        	 		 availableStocks();
+        	availableStocks();
         
-        	 		 decision = KhadriSuperUtil.isDecision(sc,decision);
+        	decision = KhadriSuperUtil.isDecision(sc,decision);
         
-        	    }while(decision);
+        }while(decision);
         
-        	    customer.setItems(listOfItems);
+         customer.setItems(listOfItems);
         
-        	    saveCustomerHistory(customer);
+         saveCustomerHistory(customer);
         
-          }
+    }
+    
 
-
-	 		 if(notAvailable){
-	 		 		System.out.println("Entered Item in out of stock !!!!");
-	 		 }
-
-	 		 availableStocks();
-
-	 		 decision = KhadriSuperUtil.isDecision(sc,decision);
-
-	    }while(decision);
-
-	    customer.setItems(listOfItems);
-
-	    saveCustomerHistory(customer);
-
+ 
 
   private void saveCustomerHistory(Customer customer) throws IOException{
   	System.out.println("customer name "+customer.getName());
