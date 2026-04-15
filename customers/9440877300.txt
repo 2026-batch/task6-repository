@@ -1,3 +1,6 @@
-IDENTITY             NAME                 AGE                  GENDER               ITEM NAME            ITEM QUANTITY
-9440877300           jhon                 23                   M                    LUX                  2         
-9440877300           jhon                 23                   M                    SANTOOR              50        
+IDENTITY             NAME                 AGE                  GENDER               ITEM NAME            ITEM QUANTITY 
+-----------------------------------------------------------------------------------------------------------------------------
+9440877300           jhon                 23                   M                    SANTOOR              10          
+9440877300           jhon                 23                   M                    PEPSODENT            90          
+9440877300           jhon                 23                   M                    BASMATI              10          
+9440877300           jhon                 23                   M                    LOKWAN               30          

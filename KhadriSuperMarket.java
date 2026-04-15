@@ -39,10 +39,7 @@ public class KhadriSuperMarket{
 
 	
    	stock = new StockData(cosmotics, groceries);
-
-
-   	stock = new StockData(cosmotics);
-    
+     
    }
 	
   public static void main(String[] args) throws IOException{
@@ -232,4 +229,6 @@ public class KhadriSuperMarket{
 
  	System.out.println("Saved Customer "+resolvedPath.toAbsolutePath());
   }
+
+}
 
