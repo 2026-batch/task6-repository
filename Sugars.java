@@ -14,8 +14,7 @@ public class Sugars{
   	return this.sugar;
   }
 
-   public String toString(){
-
+   public String toString() {
    	StringBuffer  sb = new StringBuffer("Sugars :\n");
 
    	Sugar[] enumSugars = Sugar.values();
@@ -25,6 +24,5 @@ public class Sugars{
    	}
 
    	return sb.toString();
-
    }
 }

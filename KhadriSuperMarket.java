@@ -99,7 +99,7 @@ public class KhadriSuperMarket{
 	  				int noOfQuantity = sc.nextInt(); // 2
 	  				if(soap.getQuantity() <= 0){
 	  					System.out.println("just out of stock !!!!");
-	  				}else{
+	  				}else 
 	  					soap.setQuantity(soap.getQuantity() - noOfQuantity);
 	  					Item item = new Item(itemName,noOfQuantity);
 	  					listOfItems.add(item);
@@ -197,7 +197,21 @@ public class KhadriSuperMarket{
          saveCustomerHistory(customer);
         
     }
-    
+
+
+	 		 if(notAvailable){
+	 		 		System.out.println("Entered Item in out of stock !!!!");
+	 		 }
+
+	 		 availableStocks();
+
+	 		 decision = KhadriSuperUtil.isDecision(sc,decision);
+
+	    while(decision);
+
+	    customer.setItems(listOfItems);
+
+	    saveCustomerHistory(customer);
 
  
 
@@ -230,5 +244,4 @@ public class KhadriSuperMarket{
  	System.out.println("Saved Customer "+resolvedPath.toAbsolutePath());
   }
 
-}
 
