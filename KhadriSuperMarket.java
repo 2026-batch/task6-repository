@@ -72,43 +72,46 @@ public class KhadriSuperMarket{
 
 
   private void purchaseItems() throws IOException{
-  	System.out.println(String.format("###### PURCHASE ITEMS ######"));
-  	Scanner sc = new Scanner(System.in);
-  	Customer customer = new Customer();
 
-  	System.out.println("Enter your identity (mobile number) : ");
-  	Long identity = sc.nextLong(); // 9440877300
-  	customer.setIdentity(identity);
-  	// Need to implement the logic to verify exist or new customer
+    System.out.println(String.format("###### PURCHASE ITEMS ######"));
+    Scanner sc = new Scanner(System.in);
+    Customer customer = new Customer();
+
+    System.out.println("Enter your identity (mobile number) : ");
+    Long identity = sc.nextLong(); // 9440877300
+    customer.setIdentity(identity);
+    // Need to implement the logic to verify exist or new customer
     captureCustomer(sc,customer);
 
-    List<Item> listOfItems = new ArrayList<>();
-	 boolean decision = false;
-	  do{
-	  	 	System.out.println("Enter purchase item name");
-	  		String itemName = sc.next(); // MYSORESANDLE
+     List<Item> listOfItems = new ArrayList<>();
+     boolean decision = false;
+
+     do{
+
+            System.out.println("Enter purchase item name");
+            String itemName = sc.next(); // MYSORESANDLE
 
 
-	  		Soap[] soapEnumValues = stock.getCosmotics().getSoaps().getSoap().values();
+            Soap[] soapEnumValues = stock.getCosmotics().getSoaps().getSoap().values();
 
-	  		boolean notAvailable = true;
+            boolean notAvailable = true;
 
-	   		for(Soap soap: soapEnumValues){
-	    		if(soap.name().equals(itemName)){
-					notAvailable = false;
-	    			System.out.println("Enter purchase item quantity : ");
-	  				int noOfQuantity = sc.nextInt(); // 2
-	  				if(soap.getQuantity() <= 0){
-	  					System.out.println("just out of stock !!!!");
-	  				} else {
-	  					soap.setQuantity(soap.getQuantity() - noOfQuantity);
-	  					Item item = new Item(itemName,noOfQuantity);
-	  					listOfItems.add(item);
-	  				}  				
-	    		 } 
-	 		 }
+            for(Soap soap: soapEnumValues){
+                if(soap.name().equals(itemName)){
+                    notAvailable = false;
+                    System.out.println("Enter purchase item quantity : ");
+                    int noOfQuantity = sc.nextInt(); // 2
+                    if(soap.getQuantity() <= 0){
+                        System.out.println("just out of stock !!!!");
+                    } else {
+                        soap.setQuantity(soap.getQuantity() - noOfQuantity);
+                        Item item = new Item(itemName,noOfQuantity);
+                        listOfItems.add(item);
+                    }               
+                } 
+            }
 
-       Paste[] pasteEnumValues = stock.getCosmotics().getPastes().getPaste().values();
+            Paste[] pasteEnumValues = stock.getCosmotics().getPastes().getPaste().values();
 
             for(Paste paste : pasteEnumValues){
                 if(paste.name().equals(itemName)){
@@ -127,103 +130,88 @@ public class KhadriSuperMarket{
                 }
             }
 
-       Sugar[] sugarEnumValues = stock.getGroceries().getSugars().getSugar().values();
 
-        for(Sugar sugar : sugarEnumValues){
-            if(sugar.name().equals(itemName)){
-                notAvailable = false;
 
-                System.out.println("Enter purchase item quantity : ");
-                int noOfQuantity = sc.nextInt();
+            Sugar[] sugarEnumValues = stock.getGroceries().getSugars().getSugar().values();
 
-                if(sugar.getQuantity() <= 0){
-                    System.out.println("just out of stock !!!!");
-                } else {
-                    sugar.setQuantity(sugar.getQuantity() - noOfQuantity);
-                    Item item = new Item(itemName, noOfQuantity);
-                    listOfItems.add(item);
- 				}
- 			}
- 		}
+            for(Sugar sugar : sugarEnumValues){
+                if(sugar.name().equals(itemName)){
+                     notAvailable = false;
+                    System.out.println("Enter purchase item quantity : ");
+                    int noOfQuantity = sc.nextInt();
 
-       Rice[] riceEnumValues = stock.getGroceries().getRices().getRice().values();
-
-        for(Rice rice : riceEnumValues){
-            if(rice.name().equals(itemName)){
-                notAvailable = false;
-
-                System.out.println("Enter purchase item quantity : ");
-                int noOfQuantity = sc.nextInt();
-
-                if(rice.getQuantity() <= 0){
-                    System.out.println("just out of stock !!!!");
-                } else {
-                    rice.setQuantity(rice.getQuantity() - noOfQuantity);
-                    Item item = new Item(itemName, noOfQuantity);
-                    listOfItems.add(item);
+                    if(sugar.getQuantity() <= 0){
+                         System.out.println("just out of stock !!!!");
+                    } else {
+                        sugar.setQuantity(sugar.getQuantity() - noOfQuantity);
+                        Item item = new Item(itemName, noOfQuantity);
+                        listOfItems.add(item);
+                    }
                 }
             }
-        }
 
-       Wheat[] wheatEnumValues = stock.getGroceries().getWheats().getWheat().values();
+            Rice[] riceEnumValues = stock.getGroceries().getRices().getRice().values();
 
-        for(Wheat wheat : wheatEnumValues){
-            if(wheat.name().equals(itemName)){
-                notAvailable = false;
+                for(Rice rice : riceEnumValues){
+                if(rice.name().equals(itemName)){
+                    notAvailable = false;
 
-                System.out.println("Enter purchase item quantity : ");
-                int noOfQuantity = sc.nextInt();
+                    System.out.println("Enter purchase item quantity : ");
+                    int noOfQuantity = sc.nextInt();
 
-                if(wheat.getQuantity() <= 0){
-                    System.out.println("just out of stock !!!!");
-                } else {
-                    wheat.setQuantity(wheat.getQuantity() - noOfQuantity);
-                    Item item = new Item(itemName, noOfQuantity);
-                    listOfItems.add(item);
+                    if(rice.getQuantity() <= 0){
+                        System.out.println("just out of stock !!!!");
+                    } else {
+                        rice.setQuantity(rice.getQuantity() - noOfQuantity);
+                        Item item = new Item(itemName, noOfQuantity);
+                        listOfItems.add(item);
+                    }
                 }
             }
-        }
- 
 
-  	 		 if(notAvailable){
- 	 		 		System.out.println("Entered Item in out of stock !!!!");
-     	 		 }
-        
-        	availableStocks();
-        
-        	decision = KhadriSuperUtil.isDecision(sc,decision);
-        
-        } while(decision);
-        
+
+            Wheat[] wheatEnumValues = stock.getGroceries().getWheats().getWheat().values();
+
+                for(Wheat wheat : wheatEnumValues){
+                    if(wheat.name().equals(itemName)){
+                    notAvailable = false;
+
+                    System.out.println("Enter purchase item quantity : ");
+                    int noOfQuantity = sc.nextInt();
+
+                    if(wheat.getQuantity() <= 0){
+                        System.out.println("just out of stock !!!!");
+                    } else {
+                        wheat.setQuantity(wheat.getQuantity() - noOfQuantity);
+                        Item item = new Item(itemName, noOfQuantity);
+                        listOfItems.add(item);
+                    }
+                }
+            }
+
+            if(notAvailable){
+                System.out.println("Entered Item in out of stock !!!!");     
+            }
+
+
+
+            availableStocks();
+
+          decision =  KhadriSuperUtil.isDecision(sc,decision);
+
+
+     }while(decision);
+
+
          customer.setItems(listOfItems);
-        
          saveCustomerHistory(customer);
-        
-    }
 
 
-	 		 if(notAvailable){
-	 		 		System.out.println("Entered Item in out of stock !!!!");
-	 		 }
+   }
 
-	 		 availableStocks();
-
-	 		 decision = KhadriSuperUtil.isDecision(sc,decision);
-
-	    } while(decision);
-
-	    customer.setItems(listOfItems);
-
-	    saveCustomerHistory(customer);
-
- 
 
   private void saveCustomerHistory(Customer customer) throws IOException{
-  	System.out.println("customer name "+customer.getName());
-  	System.out.println("customer identity "+customer.getIdentity());
-  	System.out.println("customer age   "+customer.getAge());
-  	System.out.println("customer gender   "+customer.getGender());
-  	System.out.println("customer purchase Items    ");
+  	System.out.println("############# Saving Customer Starts ##############");
 
   
 
@@ -244,7 +232,9 @@ public class KhadriSuperMarket{
 
   	Files.writeString(resolvedPath,builder.toString(),StandardCharsets.UTF_8);
 
- 	System.out.println("Saved Customer "+resolvedPath.toAbsolutePath());
+ 	System.out.println("Customer Saved Location :  "+resolvedPath.toAbsolutePath());
+
+    System.out.println("############# Saving Customer Ends ##############");
   }
 
-
+}

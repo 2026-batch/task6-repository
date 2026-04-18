@@ -37,6 +37,4 @@ public class StockData{
   	return "StockData : \n "+cosmotics + "\n " + groceries;
   }
 
-}
-
-
+} 
