@@ -21,7 +21,6 @@ public class Cosmotics{
       return this.pastes;
   }
 
-  // brush
 
   public String toString(){
   	return "Cosmotics : \n      "+soaps +  "\n      " + pastes;

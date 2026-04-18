@@ -1,25 +1,40 @@
-public class StockData {
+public class StockData{
+	
+  private Cosmotics cosmotics;
+ 
+  private Groceries groceries;
+ 
 
-    private Cosmotics cosmotics;
-    private Grocery grocery;
+  public StockData(Cosmotics cosmotics){
+  	this.cosmotics  =  cosmotics;
+  }
+ 
+  public StockData(Cosmotics cosmotics, Groceries groceries){
+  	this.cosmotics   =  cosmotics;
+  	this.groceries   =  groceries;
+  }
+ 
 
-    public StockData(Cosmotics cosmotics, Grocery grocery) {
-        this.cosmotics = cosmotics;
-        this.grocery = grocery;
-    }
+ public void setCosmotics(Cosmotics cosmotics){
+    this.cosmotics = cosmotics;
+  }
 
-    public Cosmotics getCosmotics() {
-        return cosmotics;
-    }
+  public Cosmotics getCosmotics(){
+  	return this.cosmotics;
+  }
 
-    public Grocery getGrocery() {
-        return grocery;
-    }
+ 
+  public void setGroceries(Groceries groceries){
+  	this.groceries = groceries;
+  }
 
-    @Override
-    public String toString() {
-        return "StockData:\n"
-                + cosmotics + "\n"
-                + grocery;
-    }
-}
+  public Groceries getGroceries(){
+  	return this.groceries;
+  }
+
+
+  public String toString(){
+  	return "StockData : \n "+cosmotics + "\n " + groceries;
+  }
+
+} 
