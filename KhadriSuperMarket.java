@@ -92,6 +92,7 @@ public class KhadriSuperMarket{
 	  		Soap[] soapEnumValues = stock.getCosmotics().getSoaps().getSoap().values();
 
 	  		boolean notAvailable = true;
+
 	   		for(Soap soap: soapEnumValues){
 	    		if(soap.name().equals(itemName)){
 					notAvailable = false;
@@ -99,7 +100,7 @@ public class KhadriSuperMarket{
 	  				int noOfQuantity = sc.nextInt(); // 2
 	  				if(soap.getQuantity() <= 0){
 	  					System.out.println("just out of stock !!!!");
-	  				}else 
+	  				} else {
 	  					soap.setQuantity(soap.getQuantity() - noOfQuantity);
 	  					Item item = new Item(itemName,noOfQuantity);
 	  					listOfItems.add(item);
@@ -139,6 +140,8 @@ public class KhadriSuperMarket{
                     System.out.println("just out of stock !!!!");
                 } else {
                     sugar.setQuantity(sugar.getQuantity() - noOfQuantity);
+                    Item item = new Item(itemName, noOfQuantity);
+                    listOfItems.add(item);
  				}
  			}
  		}
@@ -190,7 +193,7 @@ public class KhadriSuperMarket{
         
         	decision = KhadriSuperUtil.isDecision(sc,decision);
         
-        }while(decision);
+        } while(decision);
         
          customer.setItems(listOfItems);
         
@@ -207,7 +210,7 @@ public class KhadriSuperMarket{
 
 	 		 decision = KhadriSuperUtil.isDecision(sc,decision);
 
-	    while(decision);
+	    } while(decision);
 
 	    customer.setItems(listOfItems);
 
