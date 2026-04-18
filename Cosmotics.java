@@ -1,6 +1,7 @@
 public class Cosmotics{
 	
   private Soaps soaps;
+  private Pastes pastes;
 
 
   public void setSoaps(Soaps soaps){
@@ -12,11 +13,17 @@ public class Cosmotics{
   	return this.soaps;
   }
 
-  // paste
+  public void setPastes(Pastes pastes){
+    this.pastes = pastes;
+  }
+  
+  public Pastes getPastes(){
+      return this.pastes;
+  }
 
   // brush
 
   public String toString(){
-  	return "Cosmotics : \n      "+soaps;
+  	return "Cosmotics : \n      "+soaps +  "\n      " + pastes;
   }
 }
