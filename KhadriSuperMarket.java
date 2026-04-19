@@ -69,6 +69,8 @@ private void checkAndGreetCustomer(Scanner sc, Customer customer) throws IOExcep
 
         String name = customerMap.get("NAME");
         customer.setName(name);
+        customer.setAge(Integer.parseInt(customerMap.get("AGE")));
+        customer.setGender(customerMap.get("GENDER"));
         System.out.println("Welcome back, " + name + " : Happy Shopping!");
 
     } else {
@@ -184,27 +186,66 @@ private void purchaseItems() throws IOException {
     } while (decision);
 
     customer.setItems(listOfItems);
-    saveCustomerHistory(customer);
-}
+         boolean isExists = KhadriSuperUtil.isExistsCustomer(customer.getIdentity());
+          if(isExists){
+           updateCustomerHistory(customer);
+          }  else {
+           saveCustomerHistory(customer);
+          }      
+   }
 
-private void saveCustomerHistory(Customer customer) throws IOException {
-    System.out.println("############# Saving Customer Starts ##############");
 
-    Path resolvedPath = Paths.get(DIR + customer.getIdentity() + ".txt");
+  private void saveCustomerHistory(Customer customer) throws IOException{
+  	System.out.println("############# Saving Customer Starts ##############");
+
+  
+
+  	Path path = Paths.get("customers");
+
+  	Path resolvedPath = path.resolve(customer.getIdentity()+".txt");
+
+  	StringBuilder builder = new StringBuilder();
+
+   	String HEADER = String.format("%-20s %-20s %-20s %-20s %-20s %-10s \n","IDENTITY","NAME","AGE","GENDER","ITEM NAME","ITEM QUANTITY");
+   	builder.append(HEADER);
+   	builder.append("-".repeat(125) + System.lineSeparator());
+
+	for(Item item : customer.getItems()) {
+  		 String ROW = String.format("%-20d %-20s %-20d %-20s %-20s %-10d  \n",customer.getIdentity(), customer.getName(),customer.getAge(),customer.getGender(),item.getItemName(),item.getQuantity());
+  		 builder.append(ROW);
+  	}
+
+  	Files.writeString(resolvedPath,builder.toString(),StandardCharsets.UTF_8);
+
+ 	System.out.println("Customer Saved Location :  "+resolvedPath.toAbsolutePath());
+
+    System.out.println("############# Saving Customer Ends ##############");
+  }
+
+  private void updateCustomerHistory(Customer customer) throws IOException{
+    System.out.println("############# Update Customer Starts ##############");
+
+  
+
+    Path path = Paths.get("customers");
+
+    Path resolvedPath = path.resolve(customer.getIdentity()+".txt");
+
     StringBuilder builder = new StringBuilder();
 
-    String HEADER = String.format("%-20s %-20s %-20s %-20s %-20s %-10s \n", "IDENTITY", "NAME", "AGE", "GENDER", "ITEM NAME", "ITEM QUANTITY");
-    builder.append(HEADER);
-    builder.append("-".repeat(125) + System.lineSeparator());
-
-    for (Item item : customer.getItems()) {
-        String ROW = String.format("%-20d %-20s %-20d %-20s %-20s %-10d  \n", customer.getIdentity(), customer.getName(), customer.getAge(), customer.getGender(), item.getItemName(), item.getQuantity());
-        builder.append(ROW);
+    for(Item item : customer.getItems()) {
+         String ROW = String.format("%-20d %-20s %-20d %-20s %-20s %-10d  \n",customer.getIdentity(), customer.getName(),customer.getAge(),customer.getGender(),item.getItemName(),item.getQuantity());
+         builder.append(ROW);
     }
 
-    Files.writeString(resolvedPath, builder.toString(), StandardCharsets.UTF_8);
-    System.out.println("Customer Saved Location : " + resolvedPath.toAbsolutePath());
-    System.out.println("############# Saving Customer Ends ##############");
+    Files.writeString(resolvedPath,builder.toString(),StandardCharsets.UTF_8,java.nio.file.StandardOpenOption.APPEND);
+
+    System.out.println("Customer Updated Location :  "+resolvedPath.toAbsolutePath());
+
+    System.out.println("############# Updating Customer Ends ##############");
+  }
 }
 
-}                
+
+
+                

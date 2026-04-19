@@ -1,4 +1,4 @@
 IDENTITY             NAME                 AGE                  GENDER               ITEM NAME            ITEM QUANTITY 
 -----------------------------------------------------------------------------------------------------------------------------
-6380141172           sritha               23                   F                    SANTOOR              2           
-6380141172           sritha               23                   F                    COLGATE              2           
+6380141172           Sritha               23                   M                    BROWN                2           
+6380141172           Sritha               23                   M                    BASMATI              4           
